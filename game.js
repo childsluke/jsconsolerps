@@ -45,8 +45,8 @@ function game() {
     let roundNumber = 1;
     let playerWins, computerWins, numberOfTies = 0;
 
-    console.Log("ROCK, PAPER, SCISSORS \n");
-    console.Log("------------------------- \n\n")
+    console.log("ROCK, PAPER, SCISSORS \n");
+    console.log("------------------------- \n\n")
 
     // Play 5 rounds and track winners/losers
     while(roundNumber <= 5)
@@ -61,9 +61,9 @@ function game() {
         else
         {
             let computerChoice = computerPlay();
-            console.Log("Player choice was: " + playerChoice + "\n");
-            console.Log("Computer choicer was: " + computerChoice + "\n");
-            console.Log("RESULT: ");
+            console.log("Player choice was: " + playerChoice + "\n");
+            console.log("Computer choicer was: " + computerChoice + "\n");
+            console.log("RESULT: ");
 
             // Get our winner/loser, or tie
             let roundResult = playRound();
@@ -73,38 +73,38 @@ function game() {
                 case "tie":
                     {
                         numberOfTies++;
-                        console.Log("It's a tie! \n")
+                        console.log("It's a tie! \n")
                         break;
                     }
                 case "computer":
                     {
                         computerWins++;
-                        console.Log("Computer wins! \n")
+                        console.log("Computer wins! \n")
                         break;
                     }
                 case "player":
                     {
                         playerWins++;
-                        console.Log("Player wins! \n")
+                        console.log("Player wins! \n")
                         break;
                     }
             }
 
             roundNumber++;
             if(roundNumber <= 5)
-                console.Log("Let's play again! \n \n");
+                console.log("Let's play again! \n \n");
         }
     }
 
     // Results screen
-    console.Log("\n RESULTS! \n\n");
-    console.Log("Computer wins: " + computerWins + "\n");
-    console.Log("Player wins: " + playerWins + "\n");
+    console.log("\n RESULTS! \n\n");
+    console.log("Computer wins: " + computerWins + "\n");
+    console.log("Player wins: " + playerWins + "\n");
 
     if(playerWins > computerWins)
-        console.Log("Player Wins!" + "\n");
+        console.log("Player Wins!" + "\n");
     else if(computerWins > playerWins)
-        console.Log("Computer Wins!" + "\n");
+        console.log("Computer Wins!" + "\n");
     else
-        console.Log("Wouldn't you know, it's a tie!" + "\n");
+        console.log("Wouldn't you know, it's a tie!" + "\n");
 }
