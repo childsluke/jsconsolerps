@@ -57,6 +57,7 @@ function game() {
         console.log("Enter rock, paper, or scissors into the prompt! \n" );
         let playerChoice = window.prompt("Enter choice:", "");
         playerChoice = playerChoice.toLowerCase();
+        console.log("DEBUGGING: Player Choice is: " + playerChoice + "\n");
 
         if( (playerChoice != "rock") && (playerChoice != "paper") && (playerChoice != "scissors") )
             continue;
