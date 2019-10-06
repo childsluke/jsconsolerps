@@ -72,7 +72,7 @@ function game() {
             console.log("RESULT: ");
 
             // Get our winner/loser, or tie
-            let roundResult = playRound();
+            let roundResult = playRound(playerChoice, computerChoice);
 
             switch (roundResult)
             {
