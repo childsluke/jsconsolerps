@@ -54,7 +54,7 @@ function game() {
         console.log("Round " + roundNumber + "\n");
         console.log("Player: Enter rock, paper, or scissors and hit ENTER to play: ")
 
-        let playerChoice = Window.prompt("Enter rock, paper, or scissors: ", "");
+        let playerChoice = window.prompt("Enter rock, paper, or scissors: ", "");
 
         if( (playerChoice != "rock") || (playerChoice != "paper") || (playerChoice != "scissors") )
             continue;
