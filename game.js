@@ -45,14 +45,14 @@ function game() {
     let roundNumber = 1;
     let playerWins, computerWins, numberOfTies = 0;
 
-    Console.Log("ROCK, PAPER, SCISSORS \n");
-    Console.Log("------------------------- \n\n")
+    console.Log("ROCK, PAPER, SCISSORS \n");
+    console.Log("------------------------- \n\n")
 
     // Play 5 rounds and track winners/losers
     while(roundNumber <= 5)
     {
-        Console.log("Round " + roundNumber + "\n");
-        Console.log("Player: Enter rock, paper, or scissors and hit ENTER to play: ")
+        console.log("Round " + roundNumber + "\n");
+        console.log("Player: Enter rock, paper, or scissors and hit ENTER to play: ")
 
         let playerChoice = Window.prompt("Enter rock, paper, or scissors: ", "");
 
@@ -61,9 +61,9 @@ function game() {
         else
         {
             let computerChoice = computerPlay();
-            Console.Log("Player choice was: " + playerChoice + "\n");
-            Console.Log("Computer choicer was: " + computerChoice + "\n");
-            Console.Log("RESULT: ");
+            console.Log("Player choice was: " + playerChoice + "\n");
+            console.Log("Computer choicer was: " + computerChoice + "\n");
+            console.Log("RESULT: ");
 
             // Get our winner/loser, or tie
             let roundResult = playRound();
@@ -73,38 +73,38 @@ function game() {
                 case "tie":
                     {
                         numberOfTies++;
-                        Console.Log("It's a tie! \n")
+                        console.Log("It's a tie! \n")
                         break;
                     }
                 case "computer":
                     {
                         computerWins++;
-                        Console.Log("Computer wins! \n")
+                        console.Log("Computer wins! \n")
                         break;
                     }
                 case "player":
                     {
                         playerWins++;
-                        Console.Log("Player wins! \n")
+                        console.Log("Player wins! \n")
                         break;
                     }
             }
 
             roundNumber++;
             if(roundNumber <= 5)
-                Console.Log("Let's play again! \n \n");
+                console.Log("Let's play again! \n \n");
         }
     }
 
     // Results screen
-    Console.Log("\n RESULTS! \n\n");
-    Console.Log("Computer wins: " + computerWins + "\n");
-    Console.Log("Player wins: " + playerWins + "\n");
+    console.Log("\n RESULTS! \n\n");
+    console.Log("Computer wins: " + computerWins + "\n");
+    console.Log("Player wins: " + playerWins + "\n");
 
     if(playerWins > computerWins)
-        Console.Log("Player Wins!" + "\n");
+        console.Log("Player Wins!" + "\n");
     else if(computerWins > playerWins)
-        Console.Log("Computer Wins!" + "\n");
+        console.Log("Computer Wins!" + "\n");
     else
-        Console.Log("Wouldn't you know, it's a tie!" + "\n");
+        console.Log("Wouldn't you know, it's a tie!" + "\n");
 }
