@@ -32,12 +32,12 @@ function playRound(playerSelection, computerSelection){
     // Possible computer wins
     else if ( ( (playerSelection == "rock") && (computerSelection == "paper") )
              || ( (playerSelection == "paper") && (computerSelection == "scissors") ) )
-                return "computer"
+                return "computer";
                 
     // Possible player wins
     else if ( ( (computerSelection == "rock") && (playerSelection == "paper") )
              || ( (computerSelection == "paper") && (playerSelection == "scissors") ) )
-                return "player"
+                return "player";
 }
 
 function game() {
@@ -65,7 +65,7 @@ function game() {
         {
             let computerChoice = computerPlay();
             console.log("Player choice was: " + playerChoice + "\n");
-            console.log("Computer choicer was: " + computerChoice + "\n");
+            console.log("Computer choice was: " + computerChoice + "\n");
             console.log("RESULT: ");
 
             // Get our winner/loser, or tie
