@@ -46,7 +46,7 @@ function playRound(playerSelection, computerSelection){
 function game() {
 
     let roundNumber = 1;
-    let playerWins, computerWins, numberOfTies = 0;
+    let playerWins = 0, computerWins = 0, numberOfTies = 0;
 
     console.log("ROCK, PAPER, SCISSORS \n");
     console.log("------------------------- \n\n")
