@@ -1,7 +1,10 @@
 
 function computerPlay() {
 
-    let selectionNumber = Math.random(1,3);
+    let min = 1,
+        max = 3;
+
+    let selectionNumber = Math.floor(Math.random() * (max - min) + min);
 
     switch (selectionNumber) {
         
