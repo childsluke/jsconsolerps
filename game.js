@@ -1,10 +1,19 @@
 
     let roundNumber = 1;
     let playerWins = 0, computerWins = 0, numberOfTies = 0;
+    let computerChoice = "", playerChoice = "";
+    let gameComplete = false;
 
-function dispVaraible(elementClass, variable)
-{
-}
+    const roundNumberSpan = document.getElementById("round");
+
+    const playerChoiceSpan = document.getElementById("playerChoice");
+    const computerChoiceSpan = document.getElementById("computerChoice");
+
+    const computerWinsSpan = document.getElementById("computerWins");
+    const playerWinsSpan = document.getElementById("playerWins");
+    const tiesSpan = document.getElementById("ties");
+   
+    const resultsAreaDiv = document.getElementById("resultsArea");
 
 function computerPlay() {
 
@@ -38,11 +47,11 @@ function init()
 {
      roundNumber = 1;
      playerWins = 0; computerWins = 0; numberOfTies = 0;
-}
-
-function getResults()
-{
-
+     playerChoiceSpan.textContent = "Player Choice: ";
+     computerChoiceSpan.textContent = "Computer Choice:";
+     computerChoice = ""; playerChoice = "";
+     resultsAreaDiv.textContent = "NO RESULTS - GAME ONGOING";
+     gameComplete = false;
 }
 
 function playRound(playerSelection, computerSelection){
@@ -52,42 +61,99 @@ function playRound(playerSelection, computerSelection){
 
     // Possible computer wins
     else if ( ( (playerSelection == "rock") && (computerSelection == "paper") )
-             || ( (playerSelection == "paper") && (computerSelection == "scissors") ) )
+             || ( (playerSelection == "paper") && (computerSelection == "scissors") )
+             || ( (playerSelection == "scissors") && (computerSelection == "rock") ) )
                 return "computer";
                 
     // Possible player wins
     else if ( ( (computerSelection == "rock") && (playerSelection == "paper") )
-             || ( (computerSelection == "paper") && (playerSelection == "scissors") ) )
+             || ( (computerSelection == "paper") && (playerSelection == "scissors") )
+             || ( (playerSelection == "rock") && (computerSelection == "scissors") ) )
                 return "player";
 }
 
-function game() {
+function DOMscoreUpdate()
+{
+    roundNumberSpan.textContent = "ROUND: " + roundNumber;
+    
+    playerChoiceSpan.textContent = "Player Choice: " + playerChoice;
+    computerChoiceSpan.textContent = "Computer Choice: " + computerChoice;
 
-    console.log("ROCK, PAPER, SCISSORS \n");
-    console.log("------------------------- \n\n")
+    computerWinsSpan.textContent = "Computer Wins: " + computerWins;
+    playerWinsSpan.textContent = "Player Wins: " + playerWins;
+    tiesSpan.textContent = "Ties: " + numberOfTies;
+}
 
-    // Play 5 rounds and track winners/losers
-    while(roundNumber <= 5)
+function playerClick(playerButton)
+{
+    
+    if( (roundNumber <= 5) & (gameComplete == false) )
     {
-        console.log("Round " + roundNumber + "\n");
-        console.log("Player: Enter rock, paper, or scissors and hit ENTER to play: ");
-        
-        console.log("Enter rock, paper, or scissors into the prompt! \n" );
-        let playerChoice = window.prompt("Enter choice:", "");
-        playerChoice = playerChoice.toLowerCase();
-        console.log("DEBUGGING: Player Choice is: " + playerChoice + "\n");
+        console.log("Round: " + roundNumber);
 
-        if( (playerChoice != "rock") && (playerChoice != "paper") && (playerChoice != "scissors") )
-            continue;
+        computerChoice = computerPlay();
+        playerChoice = playerButton;
+        let roundResult = playRound(playerButton, computerChoice);
+
+        switch (roundResult)
+        {
+            case "tie":
+                {
+                    numberOfTies++;
+                    console.log("It's a tie! \n")
+                    break;
+                }
+            case "computer":
+                {
+                    computerWins++;
+                    console.log("Computer wins! \n")
+                    break;
+                }
+            case "player":
+                {
+                    playerWins++;
+                    console.log("Player wins! \n")
+                    break;
+                }
+        }
+
+        if(roundNumber == 5)
+        {
+            DOMscoreUpdate();
+            displayResults();
+            gameComplete = true;
+        }
+
         else
         {
-            let computerChoice = computerPlay();
-            console.log("Player choice was: " + playerChoice + "\n");
-            console.log("Computer choice was: " + computerChoice + "\n");
-            console.log("RESULT: ");
+            roundNumber++;
+            DOMscoreUpdate();
+        }
 
+    }
+
+}
+
+
+function displayResults()
+{
+    resultsAreaDiv.textContent = "WINNER: "
+
+    if(playerWins > computerWins) resultsAreaDiv.textContent += "Player!";
+    else if(computerWins > playerWins) resultsAreaDiv.textContent += "Computer!";
+    else resultsAreaDiv.textContent += "It's a Tie!";
+
+    console.log("Computer Wins: " + computerWins);
+    console.log("Player Wins: " + playerWins);
+    console.log("Ties: " + numberOfTies);
+}
+
+function game() 
+{
+    init();
+    DOMscoreUpdate();
             // Get our winner/loser, or tie
-            let roundResult = playRound(playerChoice, computerChoice);
+            /*let roundResult = playRound(playerChoice, computerChoice);
 
             switch (roundResult)
             {
@@ -113,19 +179,7 @@ function game() {
 
             roundNumber++;
             if(roundNumber <= 5)
-                console.log("Let's play again! \n \n");
-        }
-    }
+                console.log("Let's play again! \n \n");*/
+ };
 
-    // Results screen
-    console.log("\n RESULTS! \n\n");
-    console.log("Computer wins: " + computerWins + "\n");
-    console.log("Player wins: " + playerWins + "\n");
-
-    if(playerWins > computerWins)
-        console.log("Player Wins!" + "\n");
-    else if(computerWins > playerWins)
-        console.log("Computer Wins!" + "\n");
-    else
-        console.log("Wouldn't you know, it's a tie!" + "\n");
-}
+game();
